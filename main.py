@@ -39,6 +39,12 @@ class MainHandler(Handler):
         items = self.request.get_all("food")
         self.render("shopping_list.html", items = items)
 
+class FizzHandler(Handler):
+    def get(self):
+        x = int(self.request.get("x"))
+        self.render("fizzbuzz.html", x = x)
+
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/fizzbuzz/', FizzHandler)
 ], debug=True)
